@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natally Neves — Briefing de construção de marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:#47090e}
+  :root{
+    --vel:#47090e;--vel-dp:#2c0407;
+    --red:#8e1a28;--red-dk:#6f1220;
+    --paper:#fdfbf8;--w:#fff;
+    --ink:#2a0509;--ink2:#5c1119;--ink3:#8c2531;
+    --w2:rgba(255,255,255,.84);--w3:rgba(255,255,255,.66);
+  }
+  body{font-family:'Jost',system-ui,sans-serif;font-weight:400;line-height:1.72;
+    -webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink);overflow-x:hidden}
+  .wrap{max-width:660px;margin:0 auto;padding:0 26px;position:relative;z-index:6}
+  .dsp{font-family:'Gilda Display',Georgia,serif;font-weight:400}
+  .scr{font-family:'Pinyon Script',cursive;font-weight:400}
+
+  /* ============ veludo (capa, fases, aberturas, fecho) ============ */
+  .velvet{position:relative;background:var(--vel);color:var(--w);overflow:hidden;
+    --tx:var(--w);--tx2:var(--w2);--tx3:var(--w3);
+    --well:rgba(255,255,255,.1);--well-on:rgba(255,255,255,.16);--wellsh:rgba(0,0,0,.18);
+    --ph:rgba(255,255,255,.55);--cue:rgba(255,255,255,.66);--acc:#fff;--mk:rgba(255,255,255,.5);
+    --btn-bg:rgba(255,255,255,.12);--btn-hv:rgba(255,255,255,.2);--btn-tx:#fff;
+    --rule:rgba(255,255,255,.22);--rule-on:rgba(255,255,255,.5);
+    --on-bg:#fff;--on-tx:var(--vel)}
+  .velvet::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:
+    radial-gradient(118% 62% at 28% 22%,rgba(134,40,50,.4) 0%,transparent 66%),
+    radial-gradient(104% 58% at 80% 74%,rgba(26,2,6,.44) 0%,transparent 68%),
+    radial-gradient(90% 50% at 86% 14%,rgba(120,32,42,.22) 0%,transparent 64%)}
+  .velvet::after{content:"";position:absolute;inset:-4%;pointer-events:none;z-index:2;opacity:.6;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='560'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+    background-size:560px 560px;animation:drift 34s ease-in-out infinite}
+  .velvet .fiber{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:.42;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");background-size:300px 300px}
+  .velvet .grain{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:.38;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+  @keyframes drift{0%,100%{transform:translate3d(-2%,-1.5%,0)}50%{transform:translate3d(2%,1.5%,0)}}
+  @media (prefers-reduced-motion:reduce){.velvet::after{animation:none}}
+
+  /* ============ folha clara ============ */
+  .sheet{position:relative;background:var(--paper);color:var(--ink);
+    --tx:var(--ink);--tx2:var(--ink2);--tx3:var(--ink3);
+    --well:rgba(42,5,9,.05);--well-on:rgba(42,5,9,.078);--wellsh:rgba(42,5,9,.07);
+    --ph:rgba(42,5,9,.4);--cue:rgba(42,5,9,.6);--acc:var(--vel);--mk:rgba(42,5,9,.32);
+    --btn-bg:rgba(42,5,9,.052);--btn-hv:rgba(42,5,9,.1);--btn-tx:var(--ink);
+    --rule:rgba(71,9,14,.17);--rule-on:rgba(71,9,14,.42);
+    --on-bg:var(--vel);--on-tx:#fff}
+  .sheet::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:1;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)' opacity='.11'/%3E%3C/svg%3E")}
+
+  .rv{opacity:0;transform:translateY(26px);filter:blur(7px);
+    transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1),filter 1.1s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none;filter:blur(0)}
+  @media (prefers-reduced-motion:reduce){.rv{filter:none;transform:none}}
+  #grainfx{position:fixed;inset:0;pointer-events:none;z-index:9500;opacity:.5;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:200px 200px}
+  #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:10000;
+    background:linear-gradient(90deg,var(--red-dk),var(--red));transition:width .16s linear}
+  .meter{position:fixed;right:14px;bottom:14px;z-index:9999;font-family:'Gilda Display',serif;
+    font-size:13px;color:#fff;background:rgba(44,4,7,.82);padding:7px 14px;border-radius:40px;
+    border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)}
+
+  /* ============ capa ============ */
+  .cover{padding:11vh 0 12vh;text-align:center}
+  .cover .yr{font-family:'Gilda Display',serif;font-size:15px;color:var(--w3);
+    display:block;letter-spacing:.26em;margin-bottom:10vh;padding-left:.26em}
+  .lock{display:block;position:relative}
+  .lock .la{font-family:'Pinyon Script',cursive;font-size:clamp(78px,23vw,150px);
+    line-height:1.17;color:var(--w);display:inline-block;position:relative;z-index:2;
+    white-space:nowrap}
+  .lock .lb{font-family:'Gilda Display',serif;font-size:clamp(30px,8vw,57px);
+    letter-spacing:.3em;line-height:1;color:var(--w);display:block;
+    margin:0;position:relative;z-index:1;white-space:nowrap;text-align:center}
+  .cover .ttl{display:block;margin-top:9vh}
+  .cover .ttl .ta{font-family:'Gilda Display',serif;font-size:clamp(17px,4.3vw,23px);
+    color:var(--w3);display:block;line-height:1.3;letter-spacing:.14em;padding-left:.14em}
+  .cover .ttl .tb{font-family:'Gilda Display',serif;
+    font-size:clamp(28px,7.6vw,44px);color:var(--w);display:block;line-height:1.16;margin-top:7px}
+
+  /* ============ abertura ============ */
+  .intro{padding:14vh 0}
+  .intro .hail{font-family:'Pinyon Script',cursive;font-size:clamp(40px,10vw,56px);
+    color:var(--vel);display:block;line-height:1.05;margin-bottom:20px}
+  .intro .sub{font-family:'Jost',sans-serif;font-weight:300;font-size:15.5px;
+    line-height:1.75;color:var(--ink2);max-width:34ch;margin-top:20px}
+  .intro p{font-family:'Gilda Display',serif;font-size:clamp(24px,6vw,34px);
+    line-height:1.4;color:var(--ink);max-width:19ch}
+  .intro .acc{font-family:'Pinyon Script',cursive;font-size:clamp(36px,9vw,50px);
+    color:var(--red);display:block;line-height:1;margin-top:22px}
+
+  /* ============ fases ============ */
+  .fases{padding:12vh 0 8vh}
+  .fases .hd{margin-bottom:8vh}
+  .fases .hd .a{font-family:'Pinyon Script',cursive;font-size:clamp(36px,9vw,54px);
+    color:var(--w2);display:block;line-height:1}
+  .fases .hd .b{font-family:'Gilda Display',serif;font-size:clamp(33px,8.6vw,52px);
+    color:var(--w);display:block;line-height:1.14;margin-top:6px}
+  .fase{display:grid;grid-template-columns:62px 1fr;gap:3px 18px;padding:26px 0;align-items:baseline}
+  .fase + .fase{border-top:1px solid rgba(255,255,255,.2)}
+  .fase .rn{font-family:'Gilda Display',serif;font-size:clamp(27px,6.6vw,36px);
+    color:#fff;line-height:1;grid-row:span 2}
+  .fase h4{font-family:'Gilda Display',serif;font-weight:400;
+    font-size:clamp(25px,6.2vw,35px);color:var(--w);line-height:1.16}
+  .fase p{font-size:14.5px;font-weight:300;color:var(--w2);line-height:1.6}
+  .fase.now{position:relative}
+  .fase.now .rn{color:var(--w)}
+  .fase.now p::after{content:" — você está aqui";font-family:'Pinyon Script',cursive;font-size:1.6em;color:var(--w)}
+
+  /* ============ aberturas de capítulo ============ */
+  .op{padding:12vh 0 11vh;position:relative}
+  .wrap.op{padding-left:26px;padding-right:26px}
+  .op .kick{font-family:'Pinyon Script',cursive;font-size:clamp(30px,7.6vw,44px);
+    color:var(--w2);display:block;line-height:1}
+  .op .ct{font-family:'Gilda Display',serif;font-weight:400;color:var(--w);
+    font-size:clamp(38px,10.2vw,68px);line-height:1.04;display:block;margin-top:8px}
+  .op .rn{font-family:'Gilda Display',serif;line-height:.76;display:block;color:#fff}
+  /* variação A — numeral monumental acima */
+  .opA .rn{font-size:clamp(64px,16vw,112px);margin-bottom:14px;color:#fff}
+  .opA .hdg{padding-left:0}
+  /* variação B — numeral à direita, título à esquerda */
+  .opB .rn{font-size:clamp(64px,16vw,112px);text-align:right;color:#fff;margin-top:20px}
+  .opB .ct{max-width:12ch;font-size:clamp(33px,8.6vw,58px)}
+  /* variação C — numeral e título na mesma linha */
+  .opC .row{display:flex;align-items:flex-start;gap:min(6vw,28px)}
+  .opC .rn{font-size:clamp(58px,15vw,104px);color:#fff;flex:none;margin-top:.1em}
+  .opC .ct{font-size:clamp(35px,9vw,58px);max-width:11ch}
+
+  /* ============ perguntas ============ */
+  .qs{padding:11vh 0 12vh;counter-reset:qq}
+  .q{margin-bottom:56px;position:relative;padding-left:40px}
+  .q::before{counter-increment:qq;content:attr(data-n);
+    position:absolute;left:0;top:6px;font-family:'Gilda Display',serif;
+    font-size:16px;color:var(--tx3);line-height:1}
+  .q:last-child{margin-bottom:0}
+  .ask{font-family:'Gilda Display',serif;font-weight:400;
+    font-size:clamp(22px,5.4vw,28px);line-height:1.28;color:var(--tx);display:block}
+  .cue{font-size:13.5px;font-weight:400;letter-spacing:.02em;color:var(--cue);display:block;margin-top:9px}
+  .fld{margin-top:17px}
+  input[type=text],textarea{
+    width:100%;background:var(--well);border:0;color:var(--tx);
+    padding:17px 18px;font-family:'Jost',sans-serif;font-size:16.5px;font-weight:400;outline:none;
+    transition:background .25s,box-shadow .25s;resize:none;border-radius:8px;display:block;line-height:1.7;
+    box-shadow:inset 0 1px 2px var(--wellsh)}
+  input::placeholder,textarea::placeholder{color:var(--ph);font-weight:400;opacity:1}
+  input:focus,textarea:focus{background:var(--well-on);
+    box-shadow:inset 0 -2px 0 var(--acc),inset 0 1px 2px var(--wellsh)}
+  textarea{min-height:66px;overflow:hidden}
+
+  /* campos de resposta: pauta, não caixa — o que se escreve ganha linha, o que se toca ganha preenchimento */
+  .q input[type=text],.q textarea{
+    background-color:transparent;border-radius:0;box-shadow:none;
+    background-image:repeating-linear-gradient(to bottom,transparent 0 33px,var(--rule) 33px 34px);
+    background-position:0 6px;background-repeat:repeat;
+    padding:6px 0 0;font-size:17px;line-height:34px;
+    transition:background-image .3s}
+  .q textarea{min-height:74px}
+  .q input[type=text]{height:40px}
+  .q input[type=text]:focus,.q textarea:focus{
+    background-color:transparent;box-shadow:none;
+    background-image:repeating-linear-gradient(to bottom,transparent 0 33px,var(--rule-on) 33px 34px)}
+  .q input::placeholder,.q textarea::placeholder{
+    font-family:'Gilda Display',serif;font-size:18.5px;color:var(--ph)}
+
+  /* seletores com estado claro de botão */
+  .lex{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .lex label{cursor:pointer}
+  .lex input{position:absolute;opacity:0;pointer-events:none}
+  .lex span{font-family:'Gilda Display',serif;font-size:clamp(16px,4.1vw,20px);
+    background:var(--btn-bg);color:var(--btn-tx);border:0;
+    padding:10px 15px;display:inline-block;border-radius:8px;line-height:1.25;
+    transition:background .3s ease,color .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
+  .lex label:hover span{background:var(--btn-hv);transform:translateY(-2px)}
+  .lex input:checked + span{background:var(--on-bg);color:var(--on-tx);
+    box-shadow:0 10px 26px rgba(26,2,6,.3);transform:translateY(-3px)}
+
+  .ndx{margin-top:18px;display:flex;flex-direction:column;gap:9px}
+  .ndx label{display:flex;align-items:center;gap:16px;padding:17px 18px;cursor:pointer;
+    background:var(--btn-bg);border:0;border-radius:8px;
+    transition:background .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
+  .ndx input{position:absolute;opacity:0;pointer-events:none}
+  .ndx .mk{font-family:'Gilda Display',serif;font-size:clamp(25px,6vw,30px);color:var(--mk);
+    line-height:1;flex:none;transition:all .2s}
+  .ndx .tt{font-size:15.5px;color:var(--btn-tx);transition:all .2s;line-height:1.45}
+  .ndx label:has(input:checked) .tt,.ndx label:has(input:checked) .mk{color:var(--on-tx)}
+  .ndx label:hover{background:var(--btn-hv);transform:translateX(4px)}
+  .ndx label:has(input:checked){background:var(--on-bg);
+    box-shadow:0 12px 30px rgba(26,2,6,.32);transform:translateX(6px)}
+  .ndx label:has(input:checked) .mk{color:var(--on-tx)}
+  .ndx label:has(input:checked) .tt{color:var(--on-tx);font-family:'Gilda Display',serif;font-size:17.5px}
+
+  .gau{margin-top:20px}
+  .gau .pol{display:flex;justify-content:space-between;font-family:'Gilda Display',serif;
+    font-size:16.5px;color:var(--tx2)}
+  .gau .mrk{display:flex;gap:9px;margin-top:14px;align-items:flex-end;position:relative;padding-bottom:9px}
+  .gau .mrk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--rule)}
+  .gau label{flex:1;cursor:pointer}
+  .gau input{position:absolute;opacity:0;pointer-events:none}
+  .gau .mrk span{font-family:'Gilda Display',serif;font-size:21px;display:flex;align-items:flex-end;
+    justify-content:center;padding-bottom:13px;height:46px;background:var(--red);color:#fff;
+    border:0;border-radius:8px;
+    transition:height .45s cubic-bezier(.2,.8,.2,1),background .35s ease,
+               font-size .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .gau .mrk label:nth-child(2) span{height:55px}
+  .gau .mrk label:nth-child(3) span{height:64px}
+  .gau .mrk label:nth-child(4) span{height:73px}
+  .gau .mrk label:nth-child(5) span{height:82px}
+  .gau .mrk label:hover span{background:var(--red-dk);transform:translateY(-3px)}
+  .gau .mrk input:checked + span{background:var(--vel-dp);color:#fff;
+    font-size:30px;box-shadow:0 12px 30px rgba(26,2,6,.38);transform:translateY(-6px)}
+
+  /* ============ encerramento ============ */
+  .end{padding:15vh 0 9vh;text-align:center}
+  .end .et{font-family:'Gilda Display',serif;font-size:clamp(38px,9.8vw,62px);color:var(--w);line-height:1.06;display:block}
+  .end .es{font-family:'Pinyon Script',cursive;font-size:clamp(38px,9.6vw,58px);color:var(--w2);display:block;line-height:1;margin-top:4px}
+  .end .ep{font-size:15px;font-weight:300;color:var(--w2);max-width:31ch;margin:26px auto 44px}
+  .btns{display:flex;gap:13px;flex-wrap:wrap;justify-content:center}
+  .btn{border:1px solid transparent;cursor:pointer;font-family:'Jost',sans-serif;font-weight:500;font-size:15px;
+    padding:17px 34px;border-radius:6px;display:inline-flex;align-items:center;gap:11px;transition:all .22s}
+  .btn:active{transform:translateY(1px)}
+  .btn svg{width:17px;height:17px}
+  .btn-a{background:#fff;color:var(--red);box-shadow:0 8px 24px rgba(26,2,6,.32)}
+  .btn-a:hover{transform:translateY(-1px)}
+  .btn-b{background:rgba(255,255,255,.18);color:#fff}
+  .btn-b:hover{transform:translateY(-2px);filter:brightness(1.18)}
+  .wa-ajuda{font-size:14px;font-weight:300;color:var(--w2);margin-top:26px;text-align:center}
+  .wa-ajuda a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px;
+    transition:border-color .3s ease}
+  .wa-ajuda a:hover{border-bottom-color:#fff}
+  a.btn{text-decoration:none}
+  .out{margin-top:42px;text-align:left;display:none}
+  .out.show{display:block}
+  .out textarea{min-height:230px;font-size:15px;line-height:1.85}
+  .toast{font-family:'Pinyon Script',cursive;font-size:28px;color:#fff;margin-top:18px;min-height:32px}
+  .sign{padding:4vh 0 13vh;text-align:center}
+  .sign .lock .la{font-size:clamp(58px,15vw,94px)}
+  .sign .lock .lb{font-size:clamp(23px,6vw,39px)}
+
+  @media (max-width:600px){
+    .wrap{padding:0 20px}
+    .wrap.op{padding-left:20px;padding-right:20px}
+    .btns{flex-direction:column}
+    .btn{width:100%;justify-content:center}
+    .meter{right:12px;bottom:12px;font-size:12px;padding:6px 12px}
+    .fase{grid-template-columns:46px 1fr;gap:2px 13px;padding:22px 0}
+    .opA .hdg{padding-left:0}
+    .opC .row{gap:14px}
+    .gau .mrk{gap:6px}
+    .gau span{height:52px;font-size:19px}
+    .gau input:checked + span{font-size:26px}
+  }
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="meter" id="meter"></div>
+
+<!-- ===== CAPA · veludo ===== -->
+<section class="velvet cover"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <span class="yr rv">2026</span>
+    <span class="lock rv"><span class="la">Natally</span><span class="lb">Neves</span></span>
+    <span class="ttl rv"><span class="ta">Briefing de</span><span class="tb">construção de marca</span></span>
+  </div>
+</section>
+
+<!-- ===== ABERTURA · folha ===== -->
+<section class="sheet intro">
+  <div class="wrap">
+    <span class="hail rv">Yas, bem-vinda</span>
+    <p class="rv">Abaixo você preenche com as informações da sua marca.</p>
+    <p class="sub rv">Responda com calma e sinceridade. Quanto mais verdade houver nas respostas, mais precisa será a direção criativa.</p>
+    <span class="acc rv">sem pressa</span>
+  </div>
+</section>
+
+<!-- ===== FASES · veludo ===== -->
+<section class="velvet fases"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <div class="hd rv"><span class="a">As fases da</span><span class="b">construção de marca</span></div>
+    <div class="fase now rv"><span class="rn">I</span><h4>Briefing</h4><p>a marca começa a ser ouvida</p></div>
+    <div class="fase rv"><span class="rn">II</span><h4>Direção criativa</h4><p>o caminho visual é definido</p></div>
+    <div class="fase rv"><span class="rn">III</span><h4>Identidade visual</h4><p>a marca ganha rosto</p></div>
+    <div class="fase rv"><span class="rn">IV</span><h4>Lançamento</h4><p>o mundo conhece</p></div>
+  </div>
+  <div class="wrap op opA" id="c1" style="padding-top:7vh;padding-bottom:9vh">
+    <span class="rn rv">I</span>
+    <div class="hdg"><span class="kick rv">capítulo um</span><span class="ct rv">A mulher por trás da marca</span></div>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="01">
+      <span class="ask">Como a maquiagem entrou na sua vida?</span>
+      <span class="cue">O começo, o que te formou, quanto tempo de estrada</span>
+      <div class="fld"><textarea rows="1" data-q="Trajetória e formação" placeholder="Do começo até aqui"></textarea></div>
+    </div>
+    <div class="q rv" data-n="02">
+      <span class="ask">O que te faz continuar nisso?</span>
+      <span class="cue">Nos dias bons e também nos difíceis</span>
+      <div class="fld"><textarea rows="1" data-q="Motivação" placeholder="O que sustenta a escolha"></textarea></div>
+    </div>
+    <div class="q rv" data-n="03">
+      <span class="ask">O que uma cliente só encontra com você?</span>
+      <span class="cue">No atendimento, no resultado, na experiência inteira</span>
+      <div class="fld"><textarea rows="1" data-q="Diferencial" placeholder="Aquilo que é só seu"></textarea></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== II ===== -->
+<section class="velvet op opB" id="c2"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <span class="kick rv">capítulo dois</span>
+    <span class="ct rv">Identidade e posicionamento</span>
+    <span class="rn rv">II</span>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="04">
+      <span class="ask">Se a sua marca entrasse numa sala, que impressão ela deixaria?</span>
+      <span class="cue">Escolha até três</span>
+      <div class="lex" data-q="Atributos da marca">
+        <label><input type="checkbox" value="Sofisticada"><span>Sofisticada</span></label>
+        <label><input type="checkbox" value="Elegante"><span>Elegante</span></label>
+        <label><input type="checkbox" value="Sensual"><span>Sensual</span></label>
+        <label><input type="checkbox" value="Acolhedora"><span>Acolhedora</span></label>
+        <label><input type="checkbox" value="Moderna"><span>Moderna</span></label>
+        <label><input type="checkbox" value="Clássica"><span>Clássica</span></label>
+        <label><input type="checkbox" value="Serena"><span>Serena</span></label>
+        <label><input type="checkbox" value="Luxuosa"><span>Luxuosa</span></label>
+        <label><input type="checkbox" value="Natural"><span>Natural</span></label>
+        <label><input type="checkbox" value="Poderosa"><span>Poderosa</span></label>
+        <label><input type="checkbox" value="Delicada"><span>Delicada</span></label>
+        <label><input type="checkbox" value="Próxima"><span>Próxima</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="05">
+      <span class="ask">E o que ela nunca poderia parecer?</span>
+      <div class="lex" data-q="O que a marca não pode parecer">
+        <label><input type="checkbox" value="Infantil"><span>Infantil</span></label>
+        <label><input type="checkbox" value="Fria"><span>Fria</span></label>
+        <label><input type="checkbox" value="Exagerada"><span>Exagerada</span></label>
+        <label><input type="checkbox" value="Comum"><span>Comum</span></label>
+        <label><input type="checkbox" value="Amadora"><span>Amadora</span></label>
+        <label><input type="checkbox" value="Antiquada"><span>Antiquada</span></label>
+        <label><input type="checkbox" value="Inacessível"><span>Inacessível</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="06">
+      <span class="ask">Como você quer ser lembrada por quem sai da sua cadeira?</span>
+      <span class="cue">Pode escrever a frase que você gostaria de ouvir dela</span>
+      <div class="fld"><textarea rows="1" data-q="Como quer ser lembrada" placeholder="Com ela eu me senti..."></textarea></div>
+    </div>
+    <div class="q rv" data-n="07">
+      <span class="ask">O clima da marca puxa mais para onde?</span>
+      <div class="gau" data-q="Clima: discreta ou marcante">
+        <div class="pol"><span>Discreta</span><span>Marcante</span></div>
+        <div class="mrk">
+          <label><input type="radio" name="g1" value="Bem discreta"><span>1</span></label>
+          <label><input type="radio" name="g1" value="Mais discreta"><span>2</span></label>
+          <label><input type="radio" name="g1" value="No meio"><span>3</span></label>
+          <label><input type="radio" name="g1" value="Mais marcante"><span>4</span></label>
+          <label><input type="radio" name="g1" value="Bem marcante"><span>5</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="q rv" data-n="08">
+      <span class="ask">E a presença dela?</span>
+      <div class="gau" data-q="Presença: acessível ou premium">
+        <div class="pol"><span>Acessível</span><span>Premium</span></div>
+        <div class="mrk">
+          <label><input type="radio" name="g2" value="Bem acessível"><span>1</span></label>
+          <label><input type="radio" name="g2" value="Mais acessível"><span>2</span></label>
+          <label><input type="radio" name="g2" value="No meio"><span>3</span></label>
+          <label><input type="radio" name="g2" value="Mais premium"><span>4</span></label>
+          <label><input type="radio" name="g2" value="Bem premium"><span>5</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== III ===== -->
+<section class="velvet op opC" id="c3"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <div class="row">
+      <span class="rn rv">III</span>
+      <div><span class="kick rv">capítulo três</span><span class="ct rv">A cliente ideal</span></div>
+    </div>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="09">
+      <span class="ask">Pense na última cliente que você amou atender. Quem é ela?</span>
+      <span class="cue">Idade, rotina, estilo de vida, o que ela consome</span>
+      <div class="fld"><textarea rows="1" data-q="Perfil da cliente ideal" placeholder="Pode falar de alguém real"></textarea></div>
+    </div>
+    <div class="q rv" data-n="10">
+      <span class="ask">O que costuma levar ela até você?</span>
+      <span class="cue">A ocasião, o momento de vida, a necessidade</span>
+      <div class="fld"><input type="text" data-q="Ocasiões de contratação" placeholder="Casamento, formatura, autocuidado..."></div>
+    </div>
+    <div class="q rv" data-n="11">
+      <span class="ask">Na hora de escolher, o que pesa mais para ela?</span>
+      <div class="lex" data-q="Critérios de decisão">
+        <label><input type="checkbox" value="Indicação"><span>Indicação</span></label>
+        <label><input type="checkbox" value="Portfólio"><span>Portfólio</span></label>
+        <label><input type="checkbox" value="Preço"><span>Preço</span></label>
+        <label><input type="checkbox" value="Confiança"><span>Confiança</span></label>
+        <label><input type="checkbox" value="Proximidade"><span>Proximidade</span></label>
+        <label><input type="checkbox" value="Disponibilidade"><span>Disponibilidade</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="12">
+      <span class="ask">Que público você quer atender daqui em diante?</span>
+      <div class="ndx" data-q="Posicionamento desejado">
+        <label><input type="radio" name="pos" value="Acessível"><span class="mk">01</span><span class="tt">Acessível — volume e recorrência</span></label>
+        <label><input type="radio" name="pos" value="Intermediário"><span class="mk">02</span><span class="tt">Intermediário — equilíbrio entre preço e cuidado</span></label>
+        <label><input type="radio" name="pos" value="Premium"><span class="mk">03</span><span class="tt">Premium — menos clientes, mais entrega</span></label>
+        <label><input type="radio" name="pos" value="Luxo"><span class="mk">04</span><span class="tt">Luxo — exclusividade e experiência</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="13">
+      <span class="ask">O que ela mais valoriza quando sai da sua cadeira?</span>
+      <div class="fld"><input type="text" data-q="O que a cliente valoriza" placeholder="Durabilidade, escuta, pontualidade, se sentir ela mesma..."></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IV ===== -->
+<section class="velvet op opA" id="c4"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <span class="rn rv">IV</span>
+    <div class="hdg"><span class="kick rv">capítulo quatro</span><span class="ct rv">O olhar e a direção visual</span></div>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="14">
+      <span class="ask">Quais estéticas combinam com você?</span>
+      <div class="lex" data-q="Estéticas de identificação">
+        <label><input type="checkbox" value="Minimalista"><span>Minimalista</span></label>
+        <label><input type="checkbox" value="Editorial"><span>Editorial</span></label>
+        <label><input type="checkbox" value="Clássica"><span>Clássica</span></label>
+        <label><input type="checkbox" value="Vibrante"><span>Vibrante</span></label>
+        <label><input type="checkbox" value="Monocromática"><span>Monocromática</span></label>
+        <label><input type="checkbox" value="Romântica"><span>Romântica</span></label>
+        <label><input type="checkbox" value="Natural"><span>Natural</span></label>
+        <label><input type="checkbox" value="Dramática"><span>Dramática</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="15">
+      <span class="ask">Que marcas ou perfis te fazem parar e olhar?</span>
+      <span class="cue">De beleza ou de qualquer outra área — e o que te prende neles</span>
+      <div class="fld"><textarea rows="1" data-q="Referências visuais" placeholder="Perfis, marcas, lojas, embalagens..."></textarea></div>
+    </div>
+    <div class="q rv" data-n="16">
+      <span class="ask">Cores que são a sua cara</span>
+      <div class="fld"><input type="text" data-q="Cores que ama" placeholder="Vinho, nude, preto..."></div>
+    </div>
+    <div class="q rv" data-n="17">
+      <span class="ask">E as que não combinam com você de jeito nenhum</span>
+      <div class="fld"><input type="text" data-q="Cores e estéticas a evitar" placeholder="Neon, rosa-bebê, verde..."></div>
+    </div>
+    <div class="q rv" data-n="18">
+      <span class="ask">O que a pessoa deve sentir ao ver a sua marca pela primeira vez?</span>
+      <div class="fld"><input type="text" data-q="Sensação pretendida" placeholder="Desejo, confiança, calma, poder..."></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== V ===== -->
+<section class="velvet op opB" id="c5"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <span class="kick rv">capítulo cinco</span>
+    <span class="ct rv">Objetivos e posicionamento</span>
+    <span class="rn rv">V</span>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="19">
+      <span class="ask">O que você oferece hoje?</span>
+      <div class="lex" data-q="Serviços oferecidos">
+        <label><input type="checkbox" value="Noiva"><span>Noiva</span></label>
+        <label><input type="checkbox" value="Madrinha"><span>Madrinha</span></label>
+        <label><input type="checkbox" value="Social"><span>Social</span></label>
+        <label><input type="checkbox" value="Formatura"><span>Formatura</span></label>
+        <label><input type="checkbox" value="Debutante"><span>Debutante</span></label>
+        <label><input type="checkbox" value="Editorial"><span>Editorial</span></label>
+        <label><input type="checkbox" value="Cursos"><span>Cursos</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="20">
+      <span class="ask">Se pudesse vender um só, qual seria?</span>
+      <span class="cue">O serviço que deve virar a sua assinatura</span>
+      <div class="fld"><input type="text" data-q="Serviço prioritário" placeholder="Maquiagem de noiva"></div>
+    </div>
+    <div class="q rv" data-n="21">
+      <span class="ask">Quanto custa hoje esse serviço?</span>
+      <div class="ndx" data-q="Faixa de preço atual">
+        <label><input type="radio" name="fx" value="Até R$ 150"><span class="mk">01</span><span class="tt">Até R$ 150</span></label>
+        <label><input type="radio" name="fx" value="De R$ 150 a R$ 300"><span class="mk">02</span><span class="tt">De R$ 150 a R$ 300</span></label>
+        <label><input type="radio" name="fx" value="De R$ 300 a R$ 600"><span class="mk">03</span><span class="tt">De R$ 300 a R$ 600</span></label>
+        <label><input type="radio" name="fx" value="Acima de R$ 600"><span class="mk">04</span><span class="tt">Acima de R$ 600</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="22">
+      <span class="ask">Onde você quer chegar com essa marca?</span>
+      <div class="lex" data-q="Objetivos">
+        <label><input type="checkbox" value="Agenda cheia"><span>Agenda cheia</span></label>
+        <label><input type="checkbox" value="Virar referência"><span>Virar referência</span></label>
+        <label><input type="checkbox" value="Cobrar mais"><span>Cobrar mais</span></label>
+        <label><input type="checkbox" value="Vender cursos"><span>Vender cursos</span></label>
+        <label><input type="checkbox" value="Estúdio próprio"><span>Estúdio próprio</span></label>
+      </div>
+    </div>
+    <div class="q rv" data-n="23">
+      <span class="ask">O que mais te trava hoje?</span>
+      <span class="cue">O obstáculo que, resolvido, mudaria o seu mês</span>
+      <div class="fld"><input type="text" data-q="Principal desafio" placeholder="Agenda, preço, visibilidade, concorrência..."></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VI ===== -->
+<section class="velvet op opC" id="c6"><i class="fiber"></i><i class="grain"></i>
+  <div class="wrap">
+    <div class="row">
+      <span class="rn rv">VI</span>
+      <div><span class="kick rv">capítulo seis</span><span class="ct rv">Próximos passos</span></div>
+    </div>
+  </div>
+</section>
+<section class="sheet qs">
+  <div class="wrap">
+    <div class="q rv" data-n="24">
+      <span class="ask">O que não pode faltar nessa marca?</span>
+      <div class="fld"><input type="text" data-q="Indispensável" placeholder="Aquilo que você faz questão"></div>
+    </div>
+    <div class="q rv" data-n="25">
+      <span class="ask">O que você espera que mude no seu negócio depois disso?</span>
+      <div class="fld"><textarea rows="1" data-q="Expectativas com o projeto" placeholder="O resultado que faria valer a pena"></textarea></div>
+    </div>
+    <div class="q rv" data-n="26">
+      <span class="ask">Tem alguma data importante, ou algo que eu não perguntei?</span>
+      <div class="fld"><textarea rows="1" data-q="Prazos e observações" placeholder="O espaço é seu"></textarea></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENCERRAMENTO · veludo ===== -->
+<section class="velvet"><i class="fiber"></i><i class="grain"></i>
+  <div class="end">
+    <div class="wrap">
+      <span class="et rv">Terminou</span>
+      <span class="es rv">agora é comigo</span>
+      <p class="ep rv">Um clique junta tudo e envia no meu WhatsApp. Se preferir, copie e cole onde quiser.</p>
+      <div class="btns rv">
+        <a class="btn btn-a" id="waBtn" href="https://api.whatsapp.com/send?phone=5513981373724" target="_blank" rel="noopener" onclick="return enviarWhats(event)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Enviar no WhatsApp
+        </a>
+        <button class="btn btn-b" onclick="gerar()">Gerar respostas</button>
+      </div>
+      <p class="wa-ajuda">Travou em alguma pergunta? <a href="https://api.whatsapp.com/send?phone=5513981373724" target="_blank" rel="noopener">Me chame no WhatsApp</a></p>
+      <div class="out" id="out">
+        <textarea id="outText" readonly></textarea>
+        <div class="btns" style="margin-top:20px"><button class="btn btn-b" onclick="copiar()">Copiar tudo</button></div>
+        <div class="toast" id="toast"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sign">
+    <div class="wrap"><span class="lock rv"><span class="la">Natally</span><span class="lb">Neves</span></span></div>
+  </div>
+</section>
+
+<i id="grainfx"></i>
+<script>
+var prog=document.getElementById('prog');
+function onScroll(){
+  var d=document.documentElement,mx=(d.scrollHeight-d.clientHeight)||1,st=d.scrollTop||document.body.scrollTop;
+  prog.style.width=Math.min(100,st/mx*100)+'%';
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll);
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.06,rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%3*90)+'ms';io.observe(el);});
+function travarLogo(){
+  document.querySelectorAll('.lock').forEach(function(l){
+    var a=l.querySelector('.la'),b=l.querySelector('.lb');
+    if(!a||!b)return;
+    b.style.letterSpacing='0px';b.style.paddingLeft='0px';
+    var n=b.textContent.trim().length;if(n<2)return;
+    var r=document.createRange();
+    r.selectNodeContents(a);var wa=r.getBoundingClientRect().width;
+    r.selectNodeContents(b);var wb=r.getBoundingClientRect().width;
+    var ls=(wa-wb)/(n-1);
+    if(ls>0&&isFinite(ls)){b.style.letterSpacing=ls+'px';b.style.paddingLeft=ls+'px';}
+  });
+}
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(travarLogo);}
+window.addEventListener('load',travarLogo);
+window.addEventListener('resize',travarLogo);
+travarLogo();
+function autoGrow(el){el.style.height='auto';var h=el.scrollHeight;el.style.height=(6+Math.max(2,Math.round((h-6)/34))*34)+'px';}
+document.querySelectorAll('textarea:not(#outText)').forEach(function(t){
+  autoGrow(t);t.addEventListener('input',function(){autoGrow(t);contar();});
+});
+var campos=document.querySelectorAll('[data-q]'),meter=document.getElementById('meter');
+function escolha(el){return el.classList.contains('lex')||el.classList.contains('ndx')||el.classList.contains('gau');}
+function respondido(el){
+  if(escolha(el))return el.querySelectorAll('input:checked').length>0;
+  return !!(el.value&&el.value.trim());
+}
+function contar(){var n=0;campos.forEach(function(el){if(respondido(el))n++;});meter.textContent=n+' de '+campos.length;atualizarWhats();}
+document.addEventListener('input',contar);document.addEventListener('change',contar);
+function coletar(){
+  var l=["Briefing de construção de marca — Natally Neves",""];
+  campos.forEach(function(el){
+    var q=el.getAttribute('data-q'),v="";
+    if(escolha(el)){var a=[];el.querySelectorAll('input:checked').forEach(function(c){a.push(c.value)});v=a.join(", ");}
+    else{v=el.value?el.value.trim():"";}
+    if(v){l.push("• "+q+":");l.push("  "+v);l.push("");}
+  });
+  return l.length<=2?null:l.join("\n");
+}
+function gerar(){
+  var t=coletar(),o=document.getElementById('out'),ta=document.getElementById('outText');
+  if(!t){document.getElementById('toast').textContent="responda uma pergunta primeiro";o.classList.add('show');ta.value="";return;}
+  ta.value=t;o.classList.add('show');document.getElementById('toast').textContent="";
+  ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,430)+'px';
+  ta.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function copiar(){
+  var ta=document.getElementById('outText');
+  if(!ta.value){gerar();if(!ta.value)return;}
+  ta.select();ta.setSelectionRange(0,99999);
+  var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+  if(navigator.clipboard){navigator.clipboard.writeText(ta.value).catch(function(){})}
+  document.getElementById('toast').textContent=(ok||navigator.clipboard)?"copiado":"selecione e copie";
+}
+var WA="https://api.whatsapp.com/send?phone=5513981373724";
+function atualizarWhats(){
+  var b=document.getElementById('waBtn');if(!b)return;
+  var t=coletar();
+  b.href=t?WA+"&text="+encodeURIComponent(t):WA;
+}
+function enviarWhats(e){
+  var t=coletar();
+  if(!t){if(e&&e.preventDefault)e.preventDefault();gerar();return false;}
+  atualizarWhats();return true;
+}
+onScroll();contar();
+</script>
+</body>
+</html>
